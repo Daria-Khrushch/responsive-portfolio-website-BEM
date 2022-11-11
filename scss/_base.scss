@@ -1,0 +1,123 @@
+// Colors
+$heading: #4f4f4f;
+$heading2: #333333;
+$text: #828282;
+$bg: #f0f0f0;
+$btnBlue: #5c94e1;
+$skillsBlue: #2f80edb3;
+$white: #fff;
+
+// utilities
+$bradius: 10px;
+$shadow: 0px 0px 5px #8080803a;
+$pd: 1.5rem;
+
+// Responsive
+$md: 768px;
+$lg: 1024px;
+
+
+@mixin cardStyle() {
+    background: $white;
+    padding: 1.5rem;
+    box-shadow: 0 0 5px $shadow;
+    border-radius: 10px;
+}
+
+@mixin barAnimation($name, $last) {
+    @keyframes #{$name} {
+            0% {
+                width: 0;
+            }
+    
+            100% {
+                width: $last;
+            }
+        }
+}
+
+@mixin nameAnimation($name) {
+    animation: #{$name} 1000ms ease-out forwards;
+}
+
+@mixin img {
+    width: 100%;
+        height: 200px;
+        border-radius: $bradius;
+        background-color: $text;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.9;
+        transition: opacity 200ms ease-in;
+}
+
+%btn {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: $bradius + 10px;
+    text-decoration: none;
+    transition: transform 200ms ease-in;
+
+    &:hover {
+        transform: scale(0.95);
+        box-shadow: 0 4px 2px rgba(128, 128, 128, 0.362);
+    }
+}
+
+@mixin medium {
+    @media (min-width: #{$md}) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: #{$lg}) {
+        @content;
+    }
+}
+
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    width: 90%;
+    margin: 3rem auto;
+    min-width: 500px;
+
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    background: $bg;
+}
+
+h1,
+h2 {
+    color: $heading;
+}
+
+p {
+    color: $heading2;
+}
+
+section + section {
+    margin-top: 2rem;
+}
+
+.project__header, 
+.blog__header {
+    @include cardStyle();
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+}
